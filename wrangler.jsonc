@@ -5,12 +5,10 @@
   "compatibility_date": "2026-09-01",
   "workers_dev": true,
   "preview_urls": false,
-  // Custom domain NOT attached yet: shelbiaestheticswellness.com currently serves a
-  // live site via Google DNS. To attach after DNS cutover, add:
-  // "routes": [
-  //   { "pattern": "shelbiaestheticswellness.com", "custom_domain": true },
-  //   { "pattern": "www.shelbiaestheticswellness.com", "custom_domain": true }
-  // ],
+  "routes": [
+    { "pattern": "shelbiaestheticswellness.com", "custom_domain": true },
+    { "pattern": "www.shelbiaestheticswellness.com", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./dist",
     "not_found_handling": "single-page-application"
