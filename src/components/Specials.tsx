@@ -44,12 +44,13 @@ const packages = [
 
 const usd = (n: number) => `$${n.toLocaleString("en-US")}`;
 
-export default function Specials() {
+export default function Specials({ asPageHeading = false }: { asPageHeading?: boolean }) {
+  const Heading = asPageHeading ? motion.h1 : motion.h2;
   return (
     <section id="specials" className="py-24 bg-charcoal text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <motion.h2
+          <Heading
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -57,7 +58,7 @@ export default function Specials() {
             className="text-4xl md:text-5xl font-serif mb-4"
           >
             November Specials
-          </motion.h2>
+          </Heading>
           <motion.div
             initial={{ opacity: 0, width: 0 }}
             whileInView={{ opacity: 1, width: "4rem" }}

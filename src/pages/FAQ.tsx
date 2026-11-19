@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Plus, Minus, HelpCircle } from "lucide-react";
+import Seo from "../components/Seo";
+import { PAGES } from "../seoData";
 
 const faqs = [
   {
@@ -59,8 +61,22 @@ export default function FAQ() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const page = PAGES.find((p) => p.path === "/about/faq")!;
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.flatMap((c) =>
+      c.questions.map((q) => ({
+        "@type": "Question",
+        name: q.question,
+        acceptedAnswer: { "@type": "Answer", text: q.answer },
+      })),
+    ),
+  };
+
   return (
     <main className="min-h-screen bg-sand font-sans text-charcoal">
+      <Seo title={page.title} description={page.description} path={page.path} jsonLd={faqLd} />
       {/* Header Section */}
       <section className="pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

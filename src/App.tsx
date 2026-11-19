@@ -37,11 +37,14 @@ import SkinBoosters from "./pages/SkinBoosters";
 import FAQ from "./pages/FAQ";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import NotFound from "./pages/NotFound";
+import RouteSeo from "./components/RouteSeo";
 
 export default function App() {
   return (
     <Router>
       <MotionConfig reducedMotion="user">
+      <RouteSeo />
       <ScrollToTop />
       <ScrollProgress />
       <div className="min-h-screen bg-sand font-sans text-charcoal selection:bg-gold/30 selection:text-charcoal">
@@ -74,6 +77,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         </PageTransition>
         <Footer />

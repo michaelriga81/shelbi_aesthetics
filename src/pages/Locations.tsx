@@ -10,7 +10,7 @@ const locations = [
     googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=803+Massey+Tompkins+Rd+Baytown+TX+77521",
     image: "https://images.squarespace-cdn.com/content/v1/66c525b777bc8032004bde9f/7c9ea420-ec51-41c7-8fc8-bc525d458851/Screen+Shot+2024-08-27+at+1.58.15+PM.png",
     hours: "Mon-Fri: 9am - 5pm",
-    phone: "(555) 123-4567"
+    phone: "(281) 757-3250"
   },
   {
     name: "The Salt Ranch",

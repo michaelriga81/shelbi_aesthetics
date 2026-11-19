@@ -3,6 +3,8 @@ import { motion } from "motion/react";
 import { ArrowLeft, Calendar, Share2 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { blogPosts } from "../data/blogPosts";
+import Seo from "../components/Seo";
+import { SITE, absoluteUrl } from "../seoData";
 
 export default function BlogPost() {
   const { slug } = useParams();
@@ -11,6 +13,7 @@ export default function BlogPost() {
   if (!post) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-sand">
+        <Seo title="Post Not Found" description="This blog post could not be found." path={`/about/blog/${slug ?? ""}`} noindex />
         <div className="text-center">
           <h1 className="text-4xl font-serif text-charcoal mb-4">Post Not Found</h1>
           <Link to="/about/blog" className="text-gold hover:underline">
@@ -23,6 +26,24 @@ export default function BlogPost() {
 
   return (
     <main className="min-h-screen bg-white font-sans text-charcoal">
+      <Seo
+        title={post.title}
+        description={post.excerpt}
+        path={`/about/blog/${post.slug}`}
+        image={post.image}
+        type="article"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.excerpt,
+          image: post.image,
+          datePublished: new Date(post.date).toISOString().slice(0, 10),
+          mainEntityOfPage: absoluteUrl(`/about/blog/${post.slug}`),
+          author: { "@type": "Organization", name: SITE.name },
+          publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+        }}
+      />
       <article className="pt-32 pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
